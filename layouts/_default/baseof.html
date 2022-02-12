@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="{{ .Site.Language.Lang }}">
     <meta name="color-scheme" content="light dark">
+    {{ range .Site.Params.googlefonts }}
+    <link rel="stylesheet" {{ printf "href=\"//fonts.googleapis.com/css?family=%s\"" . | safeHTMLAttr }} type="text/css" media="all" />
+    {{ end }}
+
+ <style>
+ body {
+     font-family: '{{ .Site.Params.fontbody }}' !important;
+ }
+ code {
+    font-family: '{{ .Site.Params.fontcode }}' !important; 
+ }
+ </style>
 
     {{ if .Site.Params.csp }}
       {{ partial "csp.html" . }}
